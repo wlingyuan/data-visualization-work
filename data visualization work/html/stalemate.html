@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="../js/d3.v7.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/stalemate.css">
+</head>
+<body>
+  <div id="background-container">
+  <svg id="chart" width="800" height="400"></svg>
+  <div class="button">
+    <a href="ballspin.html">上一页</a>
+    </div>
+    <div class="legend">
+      <div class="legend-item">
+        <span style="background-color: #f75c7d;"></span>
+        <span>樊振东</span>
+      </div>
+      <div class="legend-item">
+        <span style="background-color: #f38cc4;"></span>
+        <span>马龙</span>
+      </div>
+    </div>
+    </div>
+  </div>
+  <script>
+   // 异步加载 JSON 数据
+   d3.json('../data/stalemate.json').then(function(data) {
+    // 创建 SVG 容器
+    var svg = d3.select("#chart");
+
+    // 定义圆圈的半径比例尺
+    var radiusScale = d3.scaleLinear()
+      .domain([d3.min(data, function(d) { return +d["回合数"]; }), d3.max(data, function(d) { return +d["回合数"]; })])
+      .range([5, 30]);
+
+    // 定义颜色比例尺
+    var colorScale = d3.scaleOrdinal()
+      .domain(["马龙", "樊振东"])
+      .range(["#f38cc4", "#f75c7d"]); 
+
+    // 绘制圆圈
+    svg.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", function(d, i) { return Math.random() * 700 + 50; }) // 随机分布圆圈位置
+      .attr("cy", function(d, i) { return Math.random() * 300 + 50; }) // 随机分布圆圈位置
+      .attr("r", function(d) { return +d["回合数"] * 2; }) // 调整圆圈半径大小
+      .attr("fill", function(d) { return colorScale(d["得分者"]); });
+      
+   })
+   
+
+  </script>
+</body>
+</html>

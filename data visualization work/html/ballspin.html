@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
+  <script src="../js/d3.v7.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/ballspin.css">
+</head>
+<body>
+
+  <div id="background-container"></div>
+  <div id="chart-marlon" style="width: 600px; height: 400px;"><p>马龙</p></div>
+  <div id="chart-fan" style="width: 600px; height: 400px;">樊振东</div>
+  <div class="button">
+    <a href="score.html">上一页</a>
+    <a href="stalemate.html">下一页</a>
+    </div>
+  <script>
+    // 异步加载 JSON 数据
+   d3.json('../data/ballspin.json').then(function(data) {
+    // 创建 ECharts 实例
+    var chartMarlon = echarts.init(document.getElementById('chart-marlon'));
+    var chartFan = echarts.init(document.getElementById('chart-fan'));
+
+    // 数据处理
+    var marlonData = Object.entries(data[0]).slice(1);
+    var fanData = Object.entries(data[1]).slice(1);
+
+    // 马龙的数据
+    var optionMarlon = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {c}'
+      },
+      series: [
+        {
+          type: 'pie',
+          radius: '50%',
+          data: marlonData.map(function(item) {
+            return {
+              name: item[0],
+              value: item[1]
+            };
+          })
+        }
+      ]
+    };
+
+    // 樊振东的数据
+    var optionFan = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {c}'
+      },
+      series: [
+        {
+          type: 'pie',
+          radius: '50%',
+          data: fanData.map(function(item) {
+            return {
+              name: item[0],
+              value: item[1]
+            };
+          })
+        }
+      ]
+    };
+// 在饼图上方添加注释
+var chartMarlonContainer = document.getElementById('chart-marlon');
+    var chartFanContainer = document.getElementById('chart-fan');
+
+    var marlonTitle = document.createElement('h2');
+    marlonTitle.innerText = '马龙';
+    marlonTitle.style.textAlign = 'center';
+    marlonTitle.style.color = 'black';
+    chartMarlonContainer.insertBefore(marlonTitle, chartMarlonContainer.firstChild);
+
+    var fanTitle = document.createElement('h2');
+    fanTitle.innerText = '樊振东';
+    fanTitle.style.textAlign = 'center';
+    fanTitle.style.color = 'black';
+    chartFanContainer.insertBefore(fanTitle, chartFanContainer.firstChild);
+    // 使用配置项配置图表
+    chartMarlon.setOption(optionMarlon);
+    chartFan.setOption(optionFan);})
+  </script>
+</body>
+</html>

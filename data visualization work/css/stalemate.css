@@ -1,0 +1,69 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: mistyrose;
+}
+
+#background-container {
+  background-image: url('../data/R-C.jpg');
+  background-color: rgba(255, 255, 255, 0.9); /* 设置半透明背景颜色，0.5表示50%的透明度 */
+  background-repeat: no-repeat; /* 防止背景图片重复 */
+  background-size: cover; /* 调整背景图片大小以适应元素 */
+  width: 922。88px; /* 设置元素宽度为100% */
+  height: 500px; /* 设置元素高度为500px，根据需要调整 */
+  margin-bottom: 20px; /* 可选，用于设置元素与下方内容的间距 */
+  border-radius: 10px;
+}
+
+
+#chart {
+  margin-top: 0px;
+  width: 922.88px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.4); /* 设置背景色为白色半透明，0.5表示50%的透明度 */
+}
+
+
+h1 {
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-right:30px;
+}
+
+.button a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #337ab7;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.button a:hover {
+  background-color: #23527c;}
+ .legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .legend-item span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+  }

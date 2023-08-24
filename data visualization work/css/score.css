@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: mistyrose;
+}
+.background-image {
+  position: absolute;
+  top: 500px;
+  left: 600px;
+  width: 500px; /* 图表宽度 */
+  height: 300px; /* 图表高度 */
+  border-radius: 10px; /* 添加圆角效果 */
+  z-index: -1;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: mistyrose;
+  position: relative;
+  width:3000px;
+}
+#chart {
+  margin-top: 200px;
+  width: 2000px;
+  height: 2000px;
+}
+
+h1 {
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #337ab7;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.button a:hover {
+  background-color: #23527c;
+}
+.title {
+  display: inline-block;
+  text-align: center; /* 居中对齐标题文本 */
+  position: absolute;
+top: 50px;
+left: 50%;
+transform: translateX(-50%);
+}
